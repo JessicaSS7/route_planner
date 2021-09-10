@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+        <div class="jumbotron text-center">
+            <div class="container">
+                <a href="/" class="lang-logo">
+                    <img src="/lang-logo.png">
+                </a>
+                <h1>Trip Planning with Node.js</h1>
+                <form class="form" action="/search" method="post" name="regForm">
+                    <div class="form-group">
+                        <input type="text" name="lat" class="form-control" id="lat" placeholder="Your starting and end latitudes, e.g. 36.114647" value="36.114647">
+                        <input type="text" name="long" class="form-control" id="long" placeholder="Your starting and end longitudes, e.g. -115.172813" value="-115.172813">
+                        <input type="text" name="query" class="form-control" id="query" placeholder="japanese food THEN bar THEN chinese restaurant">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <p>This is a simple application to plan for your trip nearby. <br>Enter the coordinates of the location where you start and end the journey. <br> Search for queries like "Japan restaurant THEN chinese food THEN bar".<br> The best supported query
+                type is "food", "restaurant", "bar", "buffet".<br>Due to limited business data availability, only a subset of US cities are available.<br>Below is a selected list of supported destinies with their coordinates:</p>
+            <ul>
+                <li>Las Vegas: 36.114647, -115.172813</li>
+                <li>Toronto: 43.651070, -79.347015</li>
+                <li>Phoenix: 33.448376, -112.074036</li>
+                <li>Charlotte: 35.227085, -80.843124</li>
+                <li>Montreal: 45.508888, -73.561668</li>
+            </ul>
+            <h4>Author: Shuwen Zheng (shuwenzheng7@gmail.com)</h4>
+        </div>
+        <div></div>
+
+</body>
+
+</html>

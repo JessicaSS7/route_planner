@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+
+    <%- include ("../partials/nav.ejs") %>
+
+        <div class="container">
+            <h2>Search Results</h2>
+
+            <p>Your query:
+                <%= query %> near latitude
+                    <%= lat %> longitude
+                        <%= long %>
+            </p>
+
+            <p>Top
+                <%=results.length%> ranking results:</p>
+
+            <div class="tab">
+                <% var cnt = 1; %>
+                    <% results.forEach(function(multiresult) { %>
+                        <button class="<%= cnt === 1 ? 'tablinks active' : 'tablinks'%>" onclick="openTab(event, '<%=cnt %>')">Result <%= cnt %></button>
+                        <% cnt++; %>
+                            <% }); %>
+            </div>
+
+            <% var cnt = 1; %>
+                <% results.forEach(function(multiresult) { %>
+                    <div id="<%= cnt %>" class="tabcontent" style="<%= cnt === 1 ? 'display: block;' : 'display:none;' %>">
+                        <li>Round trip distance:
+                            <%= multiresult.distance.toFixed(3) %> miles</li>
+
+                        <% multiresult.results.forEach(function(entity) { %>
+                            <h2 style="text-align:center;">
+                                <%=entity.raw_query%>
+                            </h2>
+                            <div class="card">
+                                <h1>
+                                    <%=entity.name%>
+                                </h1>
+                                <p class="title">
+                                    <%= entity.address %>
+                                </p>
+                                <% if (entity.categories) {%>
+                                    <p>Categories:
+                                        <%= entity.categories %>
+                                    </p>
+                                    <% }%>
+                                        <button><a href="https://www.google.com/maps/search/<%=encodeURI(entity.name)%>,<%=encodeURI(entity.address)%>/@<%=entity.latitude%>,<%=entity.longitude%>" target="_blank">Show in Google Map</a></button>
+                            </div>
+                            <% }); %>
+                    </div>
+                    <% cnt++; %>
+                        <% }); %>
+        </div>
+        <br><br>
+</body>
+
+</html>
