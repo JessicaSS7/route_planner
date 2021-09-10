@@ -1,3 +1,10 @@
+# Trip planning implementation
+
+See the live website on https://trip-planning-optimization.herokuapp.com/.
+
+
+Heroku deployment related commands:
+
 # View logging
 heroku logs --tail
 # Run locally
